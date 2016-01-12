@@ -1,5 +1,5 @@
 {
-  "name": "JAWFR",
+  "name": "jawfr",
   "version": "0.0.0",
   "description": "Reddit API Wrapper, takes care of rate limiting and fulfills interactions by promises",
   "main": "src/index.js",
