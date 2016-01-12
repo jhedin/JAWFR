@@ -1,0 +1,29 @@
+{
+  "name": "JAWFR",
+  "version": "0.0.0",
+  "description": "Reddit API Wrapper, takes care of rate limiting and fulfills interactions by promises",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "request-promise":"~1.0.2",
+    "queue":"~3.1.0",
+    "bluebird":"~3.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jhedin/JAWFR"
+  },
+  "keywords": [
+    "PRAW",
+    "NRAW",
+    "reddit"
+  ],
+  "author": "James Hedin <jhedin10@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jhedin/JAWFR/issues"
+  },
+  "homepage": "https://github.com/jhedin/JAWFR"
+}
