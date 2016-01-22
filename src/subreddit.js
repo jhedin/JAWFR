@@ -1,8 +1,14 @@
 'use strict'
 
-module.exports = function(requestor) {
-	Subreddit.prototype.req = requestor;
-	return Subreddit;
+module.exports = {
+	Subreddit: Subreddit, 
+	init: function(requestor, user, subreddit, comment, link) {
+		Subreddit.prototype.req = requestor;
+		Subreddit.prototype.User = user;
+		Subreddit.prototype.Link = link;
+		Subreddit.prototype.Comment = comment;
+		return Subreddit;
+	}
 }
 
 function Subreddit(name) {
@@ -14,6 +20,7 @@ function Subreddit(name) {
 Subreddit.prototype.getComments = function(opts) {
 	opts = opts || {};
 	opts.sort = opts.sort || "new";
+	opts.raw_json = 1;
 
 	var options = {
 		method: 'GET',
@@ -39,6 +46,7 @@ Subreddit.prototype.getComments = function(opts) {
 Subreddit.prototype.getLinks = function(opts) {
 	opts = opts || {};
 	opts.sort = opts.sort || "new";
+	opts.raw_json = 1;
 
 	var options = {
 		method: 'GET',
@@ -60,4 +68,3 @@ Subreddit.prototype.getLinks = function(opts) {
 
 	return this.req.request(options);
 }
-

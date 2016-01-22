@@ -1,12 +1,13 @@
 {
   "name": "jawfr",
-  "version": "0.0.0",
+  "version": "0.1.1",
   "description": "Reddit API Wrapper, takes care of rate limiting and fulfills interactions by promises",
   "main": "src/index.js",
   "dependencies": {
     "request-promise":"~1.0.2",
     "queue":"~3.1.0",
-    "bluebird":"~3.1.1"
+    "bluebird":"~3.1.1",
+    "cheerio": "0.19.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

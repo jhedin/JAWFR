@@ -2,9 +2,15 @@
 
 var $ = require('cheerio');
 
-module.exports = function(requestor) {
-	User.prototype.req = requestor;
-	return User;
+module.exports = {
+	User: User,
+	init: function(requestor, user, subreddit, comment, link) {
+		User.prototype.req = requestor;
+		User.prototype.Link = link;
+		User.prototype.Subreddit = subreddit;
+		User.prototype.Comment = comment;
+		return User;
+	}
 }
 
 function User(name) {
@@ -16,6 +22,7 @@ function User(name) {
 User.prototype.getComments = function(opts) {
 	opts = opts || {};
 	opts.sort = opts.sort || "new";
+	opts.raw_json = 1;
 
 	var options = {
 		method: 'GET',
@@ -41,6 +48,7 @@ User.prototype.getComments = function(opts) {
 User.prototype.getLinks = function(opts) {
 	opts = opts || {};
 	opts.sort = opts.sort || "new";
+	opts.raw_json = 1;
 
 	var options = {
 		method: 'GET',

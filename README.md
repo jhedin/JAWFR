@@ -7,10 +7,9 @@
 * is for personal scripts only (so far)
 
 ````
-var reddit = require('JAWFR');
-var r = new reddit();
+var jawfr = require('JAWFR')();
 
-r.connect(user_agent, client_id, secret, username, password)
+jawfr.connect(user_agent, client_id, secret, username, password)
 	.then(data) {
 		// data is the inital token response
 
