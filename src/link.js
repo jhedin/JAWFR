@@ -106,7 +106,11 @@ Link.prototype.report = function(reason) {
 	    },
 	    form: {
 	    	thing_id: this.name,
-	    	other_reason: reason
+	    	other_reason: reason,
+	    	reason: reason,
+	    	site_reason: reason,
+	    	api_type: "json"
+
 	    },
 		headers: {
 			'Authorization': 'bearer ' + this.req.get().tk,

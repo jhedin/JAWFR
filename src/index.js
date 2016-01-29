@@ -76,9 +76,14 @@ Jawfr.prototype.getSubreddit = function(name) {
 	return new this.Subreddit(name);
 };
 
+Jawfr.prototype.asLink = function(info) {
+
+	return new this.Link(info);
+}
+
 Jawfr.prototype.getLinks = function(names) {
 
-	if(typeof names === 'array') {
+	if(typeof names != 'string') {
 		names = names.join(',');
 	}
 
