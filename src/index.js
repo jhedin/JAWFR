@@ -24,6 +24,7 @@ module.exports = function() {
 // and such around to the request library and setTimeout
 
 function Jawfr() {
+	this._timeout = null;
 	if (!(this instanceof Jawfr))
     	return new Jawfr();     
 }
@@ -33,6 +34,7 @@ Jawfr.prototype.connect =  function (userAgent, cid, secret, user, pw) {
 		ua: userAgent,
 		id: cid
 	});
+	var that = this;
 
 	var options = {
 		method: 'POST',
@@ -58,7 +60,7 @@ Jawfr.prototype.connect =  function (userAgent, cid, secret, user, pw) {
 				timer: data.expires_in, 
 				connected: true
 			});
-			setTimeout(this.connect.bind(this), data.expires_in * 900, userAgent, cid, secret, user, pw);
+			that._timeout = setTimeout(this.connect.bind(this), data.expires_in * 900, userAgent, cid, secret, user, pw);
 			return data;
 		}.bind(this),
 	    json: true
@@ -66,6 +68,10 @@ Jawfr.prototype.connect =  function (userAgent, cid, secret, user, pw) {
 
 	return this.req.request(options);
 };
+
+Jawfr.prototype.disconnect = function(){
+	clearTimeout(this._timeout);
+}
 
 // constructor for a user
 Jawfr.prototype.getUser = function(name) {
